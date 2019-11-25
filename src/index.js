@@ -27,7 +27,7 @@ window.DatoCmsPlugin.init((plugin) => {
   plugin.startAutoResizer();
 
   const fields = plugin.parameters.instance.fields.split(',')
-    .map(a => a.trim());
+    .map((a) => a.trim());
 
   const container = document.createElement('div');
   container.classList.add('input-group');
