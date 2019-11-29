@@ -56,7 +56,6 @@ window.DatoCmsPlugin.init((plugin) => {
 
   fields.forEach((field) => {
     plugin.addFieldChangeListener(field, () => {
-      console.log('change');
       plugin.setFieldValue(plugin.fieldPath, getValue(plugin, fields));
       input.value = getValue(plugin, fields);
     });
