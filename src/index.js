@@ -7,15 +7,19 @@ function getValue(plugin, fields) {
     const fieldValue = plugin.getFieldValue(field);
     if (fieldValue) {
       if (typeof fieldValue === 'object' && Object.prototype.hasOwnProperty.call(fieldValue, plugin.locale)) {
-        parts.push(slugify(fieldValue[plugin.locale], {
-          lower: true,
-          remove: /[^\w\s-]/g,
-        }));
+        if (typeof fieldValue[plugin.locale] === 'string') {
+          parts.push(slugify(fieldValue[plugin.locale], {
+            lower: true,
+            remove: /[^\w\s-]/g,
+          }));
+        }
       } else if (typeof fieldValue === 'string') {
-        parts.push(slugify(fieldValue, {
-          lower: true,
-          remove: /[^\w\s-]/g,
-        }));
+        if (typeof fieldValue === 'string') {
+          parts.push(slugify(fieldValue, {
+            lower: true,
+            remove: /[^\w\s-]/g,
+          }));
+        }
       }
     }
   });
